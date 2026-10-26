@@ -22,6 +22,7 @@ const CARD = "#FFFFFF";
 const LINE = "#E7E1D8";
 const DANGER = "#B94C4C";
 const STORAGE_KEY = "gph-client-forms";
+const LOCAL_API_URL = (process.env.EXPO_PUBLIC_LOCAL_API_URL || "").replace(/\/$/, "");
 
 type Choice = { label: string; value: string };
 
@@ -118,10 +119,15 @@ export default function HomeScreen() {
     if (!form.fullName.trim() || !form.phone.trim() || !form.businessType || form.products.length === 0 || form.contactGoals.length === 0 || !form.interest) return;
     setSaving(true);
     try {
-      const existing = await AsyncStorage.getItem(STORAGE_KEY);
-      const records = existing ? JSON.parse(existing) : [];
       const record = { ...form, id: Date.now().toString(), createdAt: new Date().toISOString() };
-      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([...records, record]));
+      if (LOCAL_API_URL) {
+        const response = await fetch(`${LOCAL_API_URL}/api/local/leads`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(record) });
+        if (!response.ok) throw new Error("local-api-failed");
+      } else {
+        const existing = await AsyncStorage.getItem(STORAGE_KEY);
+        const records = existing ? JSON.parse(existing) : [];
+        await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify([...records, record]));
+      }
       setSubmitted(true);
     } catch {
       if (Platform.OS === "web") window.alert("تعذر حفظ الاستمارة. حاول مرة أخرى.");

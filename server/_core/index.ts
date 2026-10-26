@@ -1,4 +1,5 @@
 import "dotenv/config";
+import path from "node:path";
 import express from "express";
 import { createServer } from "http";
 import { createExpressMiddleware } from "@trpc/server/adapters/express";
@@ -8,6 +9,7 @@ import { appRouter } from "../routers";
 import { createContext } from "./context";
 import { createCorsMiddleware } from "./cors";
 import { clearLegacySessionCookie } from "./cookies";
+import { registerLocalLeadRoutes } from "./localLeads";
 
 async function startServer() {
   const app = express();
@@ -18,6 +20,8 @@ async function startServer() {
 
   app.use(express.json({ limit: "50mb" }));
   app.use(express.urlencoded({ limit: "50mb", extended: true }));
+  app.use(express.static(path.join(process.cwd(), "public")));
+  registerLocalLeadRoutes(app);
 
   registerStorageProxy(app);
   registerOAuthRoutes(app);
