@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>استمارة معلومات الزوار والعملاء المحتملين — GPH</title>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@500;700&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef3ec;--surface:#fbfdf9;--ink:#11332b;--muted:#4f6b62;--line:#c3d4c9;--accent:#0f5a46;--accent-ink:#fff;--gold:#b8892b;--hi:#1f7a4f;--mid:#a87a1d;--lo:#6f827a;--err:#b3261e;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c211b;--surface:#12302a;--ink:#eef3e8;--muted:#9fb8ac;--line:#24493e;--accent:#e0bd68;--accent-ink:#0c211b;--gold:#e0bd68;--hi:#6cc08b;--mid:#e0bd68;--lo:#9fb0a8;--err:#ff9a92;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0c211b;--surface:#12302a;--ink:#eef3e8;--muted:#9fb8ac;--line:#24493e;--accent:#e0bd68;--accent-ink:#0c211b;--gold:#e0bd68;--hi:#6cc08b;--mid:#e0bd68;--lo:#9fb0a8;--err:#ff9a92;color-scheme:dark}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect x='17' y='17' width='26' height='26' fill='none' stroke='%23b8892b' stroke-opacity='.22'/%3E%3Crect x='17' y='17' width='26' height='26' fill='none' stroke='%23b8892b' stroke-opacity='.22' transform='rotate(45 30 30)'/%3E%3C/svg%3E");color:var(--ink);font:400 17px/1.7 "Tajawal",Tahoma,sans-serif}
+main{max-width:680px;margin:0 auto;padding:30px 20px 60px;background:color-mix(in srgb,var(--bg) 90%,transparent);border-inline:2px solid var(--gold);min-height:100vh}
+.top{text-align:center;background:var(--surface);border-radius:150px 150px 12px 12px;box-shadow:0 0 0 4px var(--bg),0 0 0 6px var(--gold);padding:46px 18px 6px;margin:6px 6px 26px}
+.foot{text-align:center;font:500 20px "Reem Kufi","Tajawal",sans-serif;color:var(--gold);margin:30px 0 0}
+.bism{font:500 22px/1.6 "Reem Kufi","Tajawal",sans-serif;color:var(--gold);margin:0 0 8px}
+.logo{width:96px;height:96px;display:block;margin:0 auto 4px}
+.lg-s{fill:none;stroke:var(--gold);stroke-width:3}
+.lg-c{fill:var(--accent)}
+.lg-t{fill:var(--accent-ink);font:700 17px "Reem Kufi","Tajawal",sans-serif}
+.house{font:700 22px/1.4 "Reem Kufi","Tajawal",sans-serif;color:var(--accent);margin:0}
+.orn{height:14px;margin:12px 0 16px;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3E%3Cpath d='M14 1 L21 7 L14 13 L7 7Z' fill='none' stroke='%23b8892b' stroke-width='1.3'/%3E%3C/svg%3E") repeat-x center}
+h1,h1+.lead{text-align:center}
+h1{font:700 24px/1.4 "Reem Kufi","Tajawal",sans-serif;margin:4px 0 2px}
+.lead{color:var(--muted);margin:0 0 20px}
+.tabs{display:flex;gap:6px;margin-bottom:20px;border-bottom:1px solid var(--line)}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);font:500 16px "Tajawal",Tahoma,sans-serif;padding:10px 14px;cursor:pointer}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:700}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+h2{font:700 21px "Reem Kufi","Tajawal",sans-serif;margin:30px 0 10px;color:var(--accent);display:flex;align-items:center;gap:12px}
+h2::before{content:"";flex:none;width:10px;height:10px;background:var(--gold);transform:rotate(45deg)}
+h2::after{content:"";flex:1;height:1px;background:linear-gradient(to left,var(--gold),transparent)}
+fieldset{border:0;padding:0;margin:0 0 18px}
+legend,label.t{display:block;font-weight:700;margin-bottom:6px;padding:0}
+.hint{font-weight:400;color:var(--muted);font-size:14px}
+input[type=text],input[type=tel],input[type=email],input[type=date],textarea{width:100%;background:var(--surface);color:var(--ink);border:1px solid var(--line);border-radius:6px;padding:10px 12px;font:inherit}
+textarea{min-height:84px;resize:vertical}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media (max-width:520px){.grid{grid-template-columns:1fr}}
+.opts{display:flex;gap:8px;flex-wrap:wrap}
+.opts label{cursor:pointer}
+.opts input{position:absolute;opacity:0}
+.opts span{display:inline-block;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:6px 16px}
+.opts input:checked+span{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.opts input:focus-visible+span{outline:3px solid var(--gold);outline-offset:2px}
+.other{margin-top:8px}
+.staff{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:6px 16px 4px;margin-top:10px}
+.primary{background:var(--accent);color:var(--accent-ink);border:0;border-radius:6px;padding:12px 26px;font:700 17px "Tajawal",Tahoma,sans-serif;cursor:pointer}
+.ghost{background:none;color:var(--accent);border:1px solid var(--accent);border-radius:6px;padding:7px 14px;font:500 15px "Tajawal",Tahoma,sans-serif;cursor:pointer;text-decoration:none;display:inline-block}
+.err{color:var(--err);font-size:14px;min-height:22px;margin:0 0 10px}
+.thanks{text-align:center;padding:40px 10px}
+.thanks h2{font-size:28px;color:var(--hi)}
+.sum{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.sum div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 16px;min-width:96px}
+.sum b{display:block;font:700 28px/1.2 "Reem Kufi","Tajawal",sans-serif;color:var(--accent)}
+.lead-card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:12px 14px;margin:10px 0}
+.lead-card header{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
+.badge{font-size:13px;font-weight:700;padding:1px 10px;border-radius:999px;border:1px solid currentColor}
+.b-hi{color:var(--hi)}.b-mid{color:var(--mid)}.b-lo{color:var(--lo)}
+.lead-card p{margin:4px 0;font-size:15px}
+.lead-card .m{color:var(--muted)}
+.actions{display:flex;gap:10px;flex-wrap:wrap;margin:10px 0}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+<header class="top">
+<p class="bism">بسم الله الرحمن الرحيم</p>
+<svg class="logo" viewBox="0 0 100 100" role="img" aria-label="شعار GPH"><rect class="lg-s" x="20" y="20" width="60" height="60"/><rect class="lg-s" x="20" y="20" width="60" height="60" transform="rotate(45 50 50)"/><circle class="lg-c" cx="50" cy="50" r="21"/><text class="lg-t" x="50" y="56" text-anchor="middle" direction="ltr">GPH</text></svg>
+<p class="house">بيت العطور العالمية</p>
+<div class="orn" aria-hidden="true"></div>
+</header>
+<h1>استمارة معلومات الزوار والعملاء المحتملين</h1>
+<p class="lead">معرض Cosmenex — التواصل التجاري وتطوير الشراكات</p>
+
+<div class="tabs" role="tablist">
+  <button role="tab" id="t-form" aria-selected="true">الاستمارة</button>
+  <button role="tab" id="t-res" aria-selected="false">العملاء المسجَّلون</button>
+</div>
+
+<section id="v-form">
+<form id="f" novalidate>
+  <h2>1. المعلومات الشخصية والمهنية</h2>
+  <div class="grid">
+    <div><label class="t" for="name">الاسم واللقب</label><input type="text" id="name" autocomplete="name"></div>
+    <div><label class="t" for="company">اسم الشركة أو المؤسسة</label><input type="text" id="company" autocomplete="organization"></div>
+    <div><label class="t" for="job">الوظيفة</label><input type="text" id="job"></div>
+    <div><label class="t" for="phone">رقم الهاتف</label><input type="tel" id="phone" inputmode="tel" autocomplete="tel"></div>
+    <div><label class="t" for="email">البريد الإلكتروني</label><input type="email" id="email" autocomplete="email" dir="ltr" style="text-align:right"></div>
+    <div><label class="t" for="wilaya">الولاية</label><input type="text" id="wilaya"></div>
+  </div>
+
+  <h2>2. طبيعة النشاط التجاري</h2>
+  <div id="g-biz"></div>
+
+  <h2>3. المنتجات التي تهمكم من شركة GPH</h2>
+  <div id="g-prod"></div>
+  <fieldset><legend>كيف تعرفتم على GPH؟</legend><div id="g-src"></div></fieldset>
+  <fieldset><legend>هل سبق لكم التعامل مع شركة GPH؟</legend><div id="g-prev"></div></fieldset>
+  <fieldset><label class="t" for="needs">ما أهم احتياجاتكم أو متطلباتكم؟</label><textarea id="needs"></textarea></fieldset>
+
+  <h2>4. هدف التواصل مع شركة GPH</h2>
+  <div id="g-goal"></div>
+
+  <h2>5. الكمية المتوقعة وموعد الشراء</h2>
+  <fieldset><legend>حجم الطلب المتوقع</legend><div id="g-qty"></div></fieldset>
+  <fieldset><legend>موعد الشراء المحتمل</legend><div id="g-when"></div></fieldset>
+
+  <h2>6. المتابعة بعد المعرض</h2>
+  <fieldset><legend>وسيلة التواصل المفضلة</legend><div id="g-chan"></div></fieldset>
+  <div class="staff">
+    <p class="hint">يملؤها ممثل شركة GPH</p>
+    <fieldset><label class="t" for="notes">ملاحظات ممثل شركة GPH</label><textarea id="notes"></textarea></fieldset>
+    <fieldset><label class="t" for="fdate">تاريخ المتابعة</label><input type="date" id="fdate" style="max-width:220px"></fieldset>
+    <fieldset><legend>درجة اهتمام العميل</legend><div id="g-int"></div></fieldset>
+  </div>
+
+  <p class="err" id="err" role="alert"></p>
+  <button class="primary" type="submit">حفظ بيانات العميل</button>
+</form>
+<div class="thanks" id="thanks" hidden>
+  <h2>تم الحفظ</h2>
+  <p>تمت إضافة العميل إلى القائمة.</p>
+  <button class="ghost" id="again" type="button">زائر جديد</button>
+</div>
+</section>
+
+<section id="v-res" hidden>
+  <div class="sum" id="sum"></div>
+  <div class="opts" id="flt"></div>
+  <div class="actions">
+    <button class="ghost" id="copy" type="button">نسخ الكل (CSV)</button>
+    <button class="ghost" id="clear" type="button">مسح الكل</button>
+  </div>
+  <p class="hint" id="msg" aria-live="polite"></p>
+  <p class="lead" id="empty" hidden>لا يوجد عملاء مسجَّلون بعد.</p>
+  <div id="list"></div>
+</section>
+<div class="orn" aria-hidden="true"></div>
+<p class="foot">جزاكم الله خيرًا على زيارتكم</p>
+</main>
+
+<script>
+(function(){
+var KEY="gph-leads-v1";
+/* لتجميع الإجابات من هواتف الزبائن: ضع هنا رابط Google Apps Script (انظر الشرح). فارغ = حفظ محلي فقط */
+var ENDPOINT="https://script.google.com/macros/s/AKfycbzBKYH0yPwpWx5riAbohOvlxIDH-tktK20cmBowtij995aGEYgZwtTaPJsnCfrUYze8/exec";
+var G={
+ biz:{type:"checkbox",other:"مؤسسة أخرى",items:["موزع منتجات","تاجر جملة","تاجر تجزئة","محل أو مركز تجميل","صيدلية أو شبه صيدلية","فندق أو شركة خدمات","مؤسسة إعلامية"]},
+ prod:{type:"checkbox",other:"منتجات أخرى من الشركة",items:["منتجات العناية بالبشرة","منتجات تعطير منزلية","مجموعة العطور الخاصة My Rose & Glory","منتجات التعطير للمؤسسات والفضاءات المهنية"]},
+ src:{type:"checkbox",other:"غير ذلك",items:["Facebook","Instagram","TikTok"]},
+ prev:{type:"radio",items:["نعم","لا"]},
+ goal:{type:"checkbox",other:"غير ذلك",items:["شراء المنتجات","التوزيع وإعادة البيع","بحث عن شراكة تجارية","الحصول على قائمة الأسعار والعروض","التعرف على منتجات الشركة فقط"]},
+ qty:{type:"radio",items:["طلب تجريبي","كمية متوسطة","كميات كبيرة أو بالجملة","يتحدد حسب الأسعار والعروض"]},
+ when:{type:"radio",items:["في أقرب وقت","خلال الشهر القادم","خلال ثلاثة أشهر","غير محدد حاليًا"]},
+ chan:{type:"radio",items:["واتساب","اتصال هاتفي","البريد الإلكتروني"]},
+ int:{type:"radio",items:["مرتفع","متوسط","منخفض"]}
+};
+var data=[],filter="الكل";
+function $(i){return document.getElementById(i)}
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+function load(){try{var r=localStorage.getItem(KEY);data=r?JSON.parse(r):[];if(!Array.isArray(data))data=[]}catch(e){data=[]}}
+function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){}}
+
+function opt(type,name,val){
+  var l=el("label"),i=document.createElement("input");i.type=type;i.name=name;i.value=val;
+  l.appendChild(i);l.appendChild(el("span",null,val));return l;
+}
+function build(){
+  Object.keys(G).forEach(function(k){
+    var box=$("g-"+k),g=G[k];box.textContent="";
+    var w=el("div","opts");
+    g.items.forEach(function(v){w.appendChild(opt(g.type,k,v))});
+    if(g.other){w.appendChild(opt(g.type,k,g.other))}
+    box.appendChild(w);
+    if(g.other){
+      var t=document.createElement("input");t.type="text";t.id="o-"+k;t.className="other";t.placeholder=g.other+": اذكرها هنا";t.hidden=true;
+      box.appendChild(t);
+      w.addEventListener("change",function(){var on=w.querySelector("input[value='"+g.other+"']").checked;t.hidden=!on;if(!on)t.value=""});
+    }
+  });
+}
+function get(k){
+  var g=G[k],out=[];
+  [].forEach.call(document.querySelectorAll("#g-"+k+" input[name="+k+"]:checked"),function(i){
+    if(g.other&&i.value===g.other){var o=$("o-"+k).value.trim();out.push(o?g.other+": "+o:g.other)}else out.push(i.value);
+  });
+  return out;
+}
+function tab(w){
+  var f=w==="form";$("v-form").hidden=!f;$("v-res").hidden=f;
+  $("t-form").setAttribute("aria-selected",f);$("t-res").setAttribute("aria-selected",!f);
+  if(!f)render();
+}
+$("t-form").onclick=function(){tab("form")};
+$("t-res").onclick=function(){tab("res")};
+
+$("f").addEventListener("submit",function(e){
+  e.preventDefault();
+  if(!$("name").value.trim()){$("err").textContent="يرجى إدخال الاسم واللقب.";$("name").focus();return}
+  if(!$("phone").value.trim()&&!$("email").value.trim()){$("err").textContent="يرجى إدخال رقم الهاتف أو البريد الإلكتروني للتمكن من المتابعة.";$("phone").focus();return}
+  $("err").textContent="";
+  var d={ts:new Date().toISOString(),name:$("name").value.trim(),company:$("company").value.trim(),job:$("job").value.trim(),phone:$("phone").value.trim(),email:$("email").value.trim(),wilaya:$("wilaya").value.trim(),needs:$("needs").value.trim(),notes:$("notes").value.trim(),fdate:$("fdate").value};
+  ["biz","prod","src","prev","goal","qty","when","chan","int"].forEach(function(k){d[k]=get(k).join(" | ")});
+  data.push(d);save();
+  if(ENDPOINT){try{fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(d)})}catch(x){}}
+  $("f").hidden=true;$("thanks").hidden=false;
+});
+$("again").onclick=function(){$("f").reset();build();$("f").hidden=false;$("thanks").hidden=true;window.scrollTo(0,0)};
+
+function cls(v){return v==="مرتفع"?"b-hi":v==="متوسط"?"b-mid":"b-lo"}
+function render(){
+  var s=$("sum"),l=$("list"),fl=$("flt");s.textContent="";l.textContent="";fl.textContent="";
+  $("empty").hidden=data.length>0;
+  var cnt=function(v){return data.filter(function(d){return d.int===v}).length};
+  [["العملاء",data.length],["اهتمام مرتفع",cnt("مرتفع")],["متوسط",cnt("متوسط")],["منخفض",cnt("منخفض")]].forEach(function(p){
+    var b=el("div");b.appendChild(el("b",null,String(p[1])));b.appendChild(el("span",null,p[0]));s.appendChild(b)});
+  ["الكل","مرتفع","متوسط","منخفض"].forEach(function(v){
+    var lab=el("label"),i=document.createElement("input");i.type="radio";i.name="flt";i.checked=filter===v;
+    i.onchange=function(){filter=v;render()};lab.appendChild(i);lab.appendChild(el("span",null,v));fl.appendChild(lab)});
+  data.map(function(d,ix){return{d:d,ix:ix}}).reverse().filter(function(o){return filter==="الكل"||o.d.int===filter}).forEach(function(o){
+    var d=o.d,c=el("div","lead-card"),h=el("header");
+    h.appendChild(el("strong",null,d.name+(d.company?" — "+d.company:"")));
+    if(d.int)h.appendChild(el("span","badge "+cls(d.int),d.int));
+    c.appendChild(h);
+    var line=[d.job,d.wilaya,d.phone,d.email].filter(Boolean).join(" · ");
+    if(line)c.appendChild(el("p","m",line));
+    [["النشاط",d.biz],["المنتجات",d.prod],["الهدف",d.goal],["الكمية",d.qty],["الموعد",d.when],["التواصل المفضل",d.chan],["الاحتياجات",d.needs],["ملاحظات",d.notes],["تاريخ المتابعة",d.fdate]].forEach(function(p){
+      if(p[1])c.appendChild(el("p",null,p[0]+": "+p[1]))});
+    var a=el("div","actions");
+    var num=(d.phone||"").replace(/[^\d+]/g,"");
+    if(num){var t=el("a","ghost","اتصال");t.href="tel:"+num;a.appendChild(t)}
+    var x=el("button","ghost","حذف");x.type="button";x.onclick=function(){if(x.dataset.sure){data.splice(o.ix,1);save();render();return}x.dataset.sure="1";x.textContent="تأكيد الحذف؟";setTimeout(function(){if(x.isConnected){delete x.dataset.sure;x.textContent="حذف"}},4000)};a.appendChild(x);
+    c.appendChild(a);l.appendChild(c);
+  });
+}
+function q(v){return '"'+String(v==null?"":v).replace(/"/g,'""')+'"'}
+$("copy").onclick=function(){
+  var K=["ts","name","company","job","phone","email","wilaya","biz","prod","src","prev","needs","goal","qty","when","chan","notes","fdate","int"];
+  var rows=[K.map(q).join(",")];data.forEach(function(d){rows.push(K.map(function(k){return q(d[k])}).join(","))});
+  var t=rows.join("\n");
+  function ok(){$("msg").textContent="تم النسخ. الصقه في Excel أو في ملف نصي."}
+  function ko(){$("msg").textContent="تعذّر النسخ تلقائيًا في هذه الصفحة."}
+  try{navigator.clipboard.writeText(t).then(ok,ko)}catch(e){ko()}
+};
+$("clear").onclick=function(){var b=$("clear");if(b.dataset.sure){delete b.dataset.sure;b.textContent="مسح الكل";data=[];save();render();$("msg").textContent="تم المسح.";return}b.dataset.sure="1";b.textContent="اضغط مرة أخرى للتأكيد";setTimeout(function(){delete b.dataset.sure;b.textContent="مسح الكل"},4000)};
+load();build();
+if(/[?&]v=1/.test(location.search)){document.querySelector(".staff").hidden=true}
+})();
+</script>
+</body>
+</html>
