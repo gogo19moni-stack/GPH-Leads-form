@@ -249,7 +249,7 @@ $("copy").onclick=function(){
 };
 $("clear").onclick=function(){var b=$("clear");if(b.dataset.sure){delete b.dataset.sure;b.textContent="مسح الكل";data=[];save();render();$("msg").textContent="تم المسح.";return}b.dataset.sure="1";b.textContent="اضغط مرة أخرى للتأكيد";setTimeout(function(){delete b.dataset.sure;b.textContent="مسح الكل"},4000)};
 load();build();
-if(/[?&]v=1/.test(location.search)){document.querySelector(".staff").hidden=true}
+if(/[?&]v=1/.test(location.search)){document.querySelector(".staff").hidden=true;document.querySelector(".tabs").hidden=true}
 })();
 </script>
 </body>
