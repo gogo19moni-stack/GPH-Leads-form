@@ -20,7 +20,7 @@ const PAPER = "#F7F5F1";
 const CARD = "#FFFFFF";
 const LINE = "#E7E1D8";
 const DANGER = "#B94C4C";
-const FIREBASE_API_URL = (process.env.EXPO_PUBLIC_FIREBASE_API_URL || "").replace(/\/$/, "");
+const FIREBASE_API_URL = (process.env.EXPO_PUBLIC_FIREBASE_API_URL || "https://3000-i2gnweli7es1uiu96iul9-db34ebb9.us3.manus.computer").replace(/\/$/, "");
 
 type Choice = { label: string; value: string };
 
@@ -117,14 +117,16 @@ export default function HomeScreen() {
     if (!form.fullName.trim() || !form.phone.trim() || !form.businessType || form.products.length === 0 || form.contactGoals.length === 0 || !form.interest) return;
     setSaving(true);
     try {
-      if (!FIREBASE_API_URL) throw new Error("missing-firebase-api-url");
       const record = { ...form, id: Date.now().toString(), createdAt: new Date().toISOString() };
       const response = await fetch(`${FIREBASE_API_URL}/api/firebase/leads`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(record) });
       if (!response.ok) throw new Error("firebase-api-failed");
       setSubmitted(true);
-    } catch {
-      if (Platform.OS === "web") window.alert("تعذر حفظ الاستمارة. حاول مرة أخرى.");
-      else Alert.alert("تعذر الحفظ", "حدث خطأ أثناء حفظ الاستمارة، حاول مرة أخرى.");
+    } catch (error) {
+      const message = error instanceof Error && error.message === "missing-firebase-api-url"
+        ? "لم يتم ضبط عنوان خادم Firebase في نسخة الهاتف. استخدم EXPO_PUBLIC_FIREBASE_API_URL ثم أعد تشغيل التطبيق."
+        : "تعذر الاتصال بـ Firebase. تحقق من الإنترنت ثم حاول مرة أخرى.";
+      if (Platform.OS === "web") window.alert(message);
+      else Alert.alert("تعذر الحفظ", message);
     } finally { setSaving(false); }
   };
   if (submitted) return <SafeAreaView style={styles.safeArea} edges={["top", "left", "right"]}><View style={styles.successScreen}><View style={styles.successMark}><MaterialIcons name="check" size={38} color={CARD} /></View><Text style={styles.successKicker}>GPH · COSMENEX</Text><Text style={styles.successTitle}>تم حفظ الاستمارة</Text><Text style={styles.successText}>شكراً لتواصلكم مع شركة GPH. تم تسجيل معلومات العميل بنجاح ويمكنكم متابعة التواصل حسب البيانات المدخلة.</Text><Pressable onPress={startNew} style={({ pressed }) => [styles.primaryButton, pressed && styles.pressed]}><MaterialIcons name="add" size={20} color={CARD} /><Text style={styles.primaryButtonText}>بدء استمارة جديدة</Text></Pressable></View></SafeAreaView>;
