@@ -36,7 +36,13 @@ $env:EXPO_PUBLIC_FIREBASE_API_URL="http://192.168.1.25:3000"
 pnpm dev:metro
 ```
 
-في النشر العام، يجب ضبط `EXPO_PUBLIC_FIREBASE_API_URL` على عنوان HTTPS عام للخادم المنشور. لا تستخدم عنواناً داخلياً مثل `localhost` في تطبيق الهاتف.
+الخادم العام المنشور حالياً هو:
+
+```text
+https://gphclients-2kdeyisk.manus.space
+```
+
+في نسخة الهاتف يمكن استخدام هذا العنوان تلقائياً، أو ضبط `EXPO_PUBLIC_FIREBASE_API_URL` على نفس عنوان HTTPS. لا تستخدم عنواناً داخلياً مثل `localhost` في تطبيق الهاتف.
 
 ## 4. لوحة الإدارة وتصدير Excel
 

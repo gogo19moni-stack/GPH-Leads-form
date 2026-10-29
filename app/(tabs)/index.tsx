@@ -20,7 +20,7 @@ const PAPER = "#F7F5F1";
 const CARD = "#FFFFFF";
 const LINE = "#E7E1D8";
 const DANGER = "#B94C4C";
-const FIREBASE_API_URL = (process.env.EXPO_PUBLIC_FIREBASE_API_URL || "https://3000-i2gnweli7es1uiu96iul9-db34ebb9.us3.manus.computer").replace(/\/$/, "");
+const FIREBASE_API_URL = (process.env.EXPO_PUBLIC_FIREBASE_API_URL || "https://gphclients-2kdeyisk.manus.space").replace(/\/$/, "");
 
 type Choice = { label: string; value: string };
 
